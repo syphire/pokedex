@@ -1,4 +1,4 @@
-$rojo: #C00D0D
+﻿$rojo: #C00D0D
 $rojo-oscuro: #8B0000
 $rojo-claro: #870909
 $verde: #51AE5F
@@ -171,6 +171,8 @@ $gris-medio: #B0B0B0
 	background: $gris
 
 #pantalla-interior
+	display: flex
+	flex-wrap: wrap
 	width: 100%
 	margin: 20px
 	margin-bottom: 28px
@@ -178,6 +180,43 @@ $gris-medio: #B0B0B0
 	background: $blanco
 	border-radius: 5px
 	border: 5px solid $gris-medio
+
+
+/* CAJA DE BÚSQUEDA */
+
+#caja-busqueda
+	margin: 0 auto
+	margin-top: 10px
+
+#resultado-busqueda
+	width: 100%
+	display: inline-flex
+
+#resultado-busqueda img
+	width: 45%
+	height: 100%
+
+#tipos
+	list-style-type: square
+	margin-left: 20px
+	margin-top: 3px
+
+#pokemon
+	width: 220px
+	border: 0
+	border-bottom: 2px solid $gris-medio
+	font-size: 16px
+	padding-left: 5px
+
+#buscar
+	width: 55px
+	height: 23px
+	background: $rojo
+	border: 1px solid $rojo-oscuro
+	border-radius: 3px
+	color: $blanco
+	margin-left: 5px
+	font-size: 14px
 
 #pantalla-botones 
 	width: 100%

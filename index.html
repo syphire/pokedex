@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>CSS Pokedex</title>
 		<link rel="stylesheet" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	</head>
 
 	<body>
@@ -46,6 +47,38 @@
 				<div id="abajo-centro">
 					<div id="pantalla">
 						<div id="pantalla-interior">
+
+							<script>
+								$(document).ready(function(){
+
+									var getPokemon = function(){
+										var pokemon = $('#pokemon').val();
+										$.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemon + "/" + "?callback=", function(json) {
+											if (json != "Nothing found.") {
+												$('#resultado-busqueda').html('<img src="'+json.sprites.front_default+'"></img>');
+												$('#resultado-busqueda').append('<h3>Types:</h3>');
+												$('#resultado-busqueda').append('<ul id="tipos">');
+												for (var data in json.types) {
+													$('#tipos').append('<li>'+json.types[data].type.name+'</li>');
+												}
+
+											} else {
+												$('#resultado-busqueda').html('<h3>No hay ningún Pokémon que coincida con la búsqueda</h3>');
+											}
+										});
+									}
+
+									$('#buscar').click(getPokemon);
+								});
+							</script>
+
+
+							<div id="caja-busqueda">
+								<input id="pokemon" type="text" placeholder="Pokémon name or number">
+								<button id="buscar">Search</button>
+							</div>
+							<div id="resultado-busqueda">
+							</div>
 						</div>
 					</div>
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0; }
@@ -158,6 +159,8 @@
   background: #424242; }
 
 #pantalla-interior {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin: 20px;
   margin-bottom: 28px;
@@ -165,6 +168,41 @@
   background: #fff;
   border-radius: 5px;
   border: 5px solid #B0B0B0; }
+
+/* CAJA DE BÚSQUEDA */
+#caja-busqueda {
+  margin: 0 auto;
+  margin-top: 10px; }
+
+#resultado-busqueda {
+  width: 100%;
+  display: inline-flex; }
+
+#resultado-busqueda img {
+  width: 45%;
+  height: 100%; }
+
+#tipos {
+  list-style-type: square;
+  margin-left: 20px;
+  margin-top: 3px; }
+
+#pokemon {
+  width: 220px;
+  border: 0;
+  border-bottom: 2px solid #B0B0B0;
+  font-size: 16px;
+  padding-left: 5px; }
+
+#buscar {
+  width: 55px;
+  height: 23px;
+  background: #C00D0D;
+  border: 1px solid #8B0000;
+  border-radius: 3px;
+  color: #fff;
+  margin-left: 5px;
+  font-size: 14px; }
 
 #pantalla-botones {
   width: 100%;
