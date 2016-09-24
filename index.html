@@ -15,9 +15,11 @@
 				<div id="tapa">
 					<div id="pokeball-exterior">
 					</div>
-					<div id="barra-roja">
-					</div>
-					<div id="pokeball-interior">
+					<div id="tapa-interior">
+						<div id="barra-roja">
+						</div>
+						<div id="pokeball-interior">
+						</div>
 					</div>
 				</div>
 				<div id="union">
@@ -57,6 +59,9 @@
 									}
 
 									var getPokemon = function(){
+										$('#imagen-pokemon').html('');
+										$('#info-pokemon').html('');
+										$("#imagen-carga").show();
 										var pokemon = $('#pokemon').val().toLowerCase();
 										$.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemon + "/" + "?callback=", function(json) {
 											if (json != "Nothing found.") {
@@ -75,10 +80,22 @@
 											} else {
 												$('#resultado-busqueda').html('<h3>No hay ningún Pokémon que coincida con la búsqueda</h3>');
 											}
+											$("#imagen-carga").hide();
 										});
 									}
 
+									var siguientePagina = function() {
+
+									}
+
 									$('#buscar').click(getPokemon);
+									$('#boton-izquierda').click(siguientePagina);
+
+									$('#pokemon').keypress(function(e) {
+										if(e.which == 13) {
+											getPokemon();
+										}
+									});
 								});
 							</script>
 
@@ -88,6 +105,7 @@
 								<button id="buscar">Search</button>
 							</div>
 							<div id="resultado-busqueda">
+								<img id="imagen-carga" src="img/load.gif">
 								<div id="imagen-pokemon">
 								</div>
 								<div id="info-pokemon">

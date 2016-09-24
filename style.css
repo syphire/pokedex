@@ -38,6 +38,9 @@
   margin: 0 auto;
   border: 50px solid rgba(0, 0, 0, 0.3); }
 
+#tapa-interior {
+  display: flex; }
+
 #pokeball-interior {
   width: 60px;
   height: 60px;
@@ -46,14 +49,13 @@
   border: 9px solid #870909;
   position: absolute;
   z-index: 100;
-  margin: 85px auto auto 163px; }
+  margin: 85px auto auto -241px; }
 
 #barra-roja {
   width: 210px;
   height: 30px;
   background: #C00D0D;
-  position: absolute;
-  margin: 110px auto auto 96px; }
+  margin: 110px auto auto -307px; }
 
 #union {
   display: flex;
@@ -122,8 +124,7 @@
   margin: 30px auto auto 0px; }
 
 #boton-verde-dos {
-  margin: 60px auto auto 0px;
-  position: absolute; }
+  margin: 60px auto auto -20px; }
 
 #boton-azul {
   width: 60px;
@@ -163,6 +164,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  height: 190px;
   margin: 20px;
   margin-bottom: 28px;
   border-radius: 3px;
@@ -178,6 +180,12 @@
 #resultado-busqueda {
   width: 100%;
   display: flex; }
+
+#imagen-carga {
+  display: none;
+  width: 120px;
+  position: absolute;
+  margin: -50px auto auto 80px; }
 
 #imagen-pokemon {
   width: 43%;
