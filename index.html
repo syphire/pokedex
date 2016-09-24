@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>CSS Pokedex</title>
 		<link rel="stylesheet" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	</head>
 
@@ -51,15 +52,24 @@
 							<script>
 								$(document).ready(function(){
 
+									function capitalizeFirstLetter(string) {
+										return string.charAt(0).toUpperCase() + string.slice(1);
+									}
+
 									var getPokemon = function(){
-										var pokemon = $('#pokemon').val();
+										var pokemon = $('#pokemon').val().toLowerCase();
 										$.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemon + "/" + "?callback=", function(json) {
 											if (json != "Nothing found.") {
-												$('#resultado-busqueda').html('<img src="'+json.sprites.front_default+'"></img>');
-												$('#resultado-busqueda').append('<h3>Types:</h3>');
-												$('#resultado-busqueda').append('<ul id="tipos">');
+												$('#imagen-pokemon').html('<img src="'+json.sprites.front_default+'"></img>');
+
+												var nombrePokemon = capitalizeFirstLetter(json.name);
+												$('#info-pokemon').html('<h2>'+nombrePokemon+'</h2>');
+
+												$('#info-pokemon').append('<h3>Types:</h3>');
+												$('#info-pokemon').append('<ul id="tipos">');
 												for (var data in json.types) {
-													$('#tipos').append('<li>'+json.types[data].type.name+'</li>');
+													var tipo = capitalizeFirstLetter(json.types[data].type.name);
+													$('#tipos').append('<li>'+tipo+'</li>');
 												}
 
 											} else {
@@ -78,6 +88,10 @@
 								<button id="buscar">Search</button>
 							</div>
 							<div id="resultado-busqueda">
+								<div id="imagen-pokemon">
+								</div>
+								<div id="info-pokemon">
+								</div>
 							</div>
 						</div>
 					</div>
