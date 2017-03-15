@@ -61,26 +61,30 @@
 									var getPokemon = function(){
 										$('#imagen-pokemon').html('');
 										$('#info-pokemon').html('');
+										$("#info-error").hide();
+										$("#img-error").hide();
 										$("#imagen-carga").show();
 										$("#texto-carga").show();
 										var pokemon = $('#pokemon').val().toLowerCase();
 										$.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemon + "/" + "?callback=", function(json) {
-											if (json != "Nothing found.") {
-												$('#imagen-pokemon').html('<img src="'+json.sprites.front_default+'"></img>');
+											$('#imagen-pokemon').html('<img src="'+json.sprites.front_default+'"></img>');
 
-												var nombrePokemon = capitalizeFirstLetter(json.name);
-												$('#info-pokemon').html('<h2>'+nombrePokemon+'</h2>');
+											var nombrePokemon = capitalizeFirstLetter(json.name);
+											$('#info-pokemon').html('<h2>'+nombrePokemon+'</h2>');
 
-												$('#info-pokemon').append('<h3>Types:</h3>');
-												$('#info-pokemon').append('<ul id="tipos">');
-												for (var data in json.types) {
-													var tipo = capitalizeFirstLetter(json.types[data].type.name);
-													$('#tipos').append('<li>'+tipo+'</li>');
-												}
-
-											} else {
-												$('#resultado-busqueda').html('<h3>No hay ningún Pokémon que coincida con la búsqueda</h3>');
+											$('#info-pokemon').append('<h3>Types:</h3>');
+											$('#info-pokemon').append('<ul id="tipos">');
+											for (var data in json.types) {
+												var tipo = capitalizeFirstLetter(json.types[data].type.name);
+												$('#tipos').append('<li>'+tipo+'</li>');
 											}
+										
+											$("#texto-carga").hide();
+											$("#imagen-carga").hide();
+										})
+										.fail (function() {
+											$("#info-error").show();
+											$("#img-error").show();
 											$("#texto-carga").hide();
 											$("#imagen-carga").hide();
 										});
@@ -109,6 +113,8 @@
 							<div id="resultado-busqueda">
 								<h4 id="texto-carga">Loading...</h4>
 								<img id="imagen-carga" src="img/load.gif">
+								<h4 id="info-error">Pokémon not found</h4>
+								<img id="img-error" src="img/sad.gif">
 								<div id="imagen-pokemon">
 								</div>
 								<div id="info-pokemon">

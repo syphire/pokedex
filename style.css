@@ -204,6 +204,18 @@
   width: 100%;
   height: auto; }
 
+#info-error {
+  display: none;
+  margin-top: -60px;
+  margin-left: 79px;
+  width: 100%; }
+
+#img-error {
+  display: none;
+  width: 100px;
+  position: absolute;
+  margin: -27px auto auto 100px; }
+
 #info-pokemon {
   margin: 0 auto;
   padding-top: 10px; }
